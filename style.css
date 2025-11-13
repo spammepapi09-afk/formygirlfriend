@@ -1,78 +1,248 @@
-$bg: #B3D6F5;
-$tab-bg: #FFC0CB; // pink strip
-$f-color: #0077B2;
-$s-color: #005A8C;
-$t-color: #006699;
-$fo-color: #E6F2FA;
-$fi-color: #CCE0F0;
-$color-heart: #D00000;
-
-@mixin posAbsolute($p) {
-  width: 100%;
-  height: 100%;
-  bottom: 0;
-  left: 0;
-  @if ($p == a) { position: absolute; }
-  @else if($p == r) { position: relative; }
+/* Colors replaced from SCSS variables */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-* { padding: 0; margin: 0; box-sizing: border-box; }
-
-html, body { height: 100%; }
+html, body {
+  height: 100%;
+}
 
 body {
   width: 100%;
-  background-color: $bg;
+  background-color: #B3D6F5;
   font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  @media (max-height: 500px) { margin: 25% 0; }
+}
+
+@media (max-height: 500px) {
+  body {
+    margin: 25% 0;
+  }
 }
 
 /* Envelope styles */
 .envelop {
-  width: 15rem; height: 10rem;
-  position: absolute; left: 0; right: 0; margin: auto;
-  @media (min-width: 400px) and (max-width: 600px) { width: 20rem; height: 15rem; }
-  @media (min-width: 600px) { width: 25rem; height: 20rem; }
-  @media (min-width: 600px) and (min-height: 600px) { bottom: 20%; }
+  width: 15rem;
+  height: 10rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
 
-  &__front-paper { @include posAbsolute(a); border-radius: 0.7rem; border: 0.35rem solid $s-color; background-color: $f-color; clip-path: polygon(100% 0%, 50% 70%, 0% 0%, 0% 100%, 100% 100%); z-index: 300; }
-  &__back-paper { @include posAbsolute(a); border-radius: 0.7rem; background-color: $s-color; clip-path: polygon(0% 0%, 100% 0%, 90% 100%, 0% 90%); z-index: 100; }
-  &__up-paper { @include posAbsolute(r); border-radius: 0.7rem; background-color: $s-color; z-index: 400; clip-path: polygon(0% 0%, 100% 0%, 50% 81%); }
-  &__sticker {
-    width: 100%; height: 20%; position: absolute; margin: auto; top: 30%; left: 0; bottom: 0; right: 0; z-index: 400;
-    background-image: url("https://www.freepnglogos.com/uploads/heart-png/emoji-heart-33.png");
-    background-color: $fo-color; border: 0.3rem solid $fi-color; background-size: 2rem; background-position: center;
-    @media (max-width: 400px) { background-size: 1.2rem; }
-    @media (min-width: 600px) { height: 15%; }
+@media (min-width: 400px) and (max-width: 600px) {
+  .envelop {
+    width: 20rem;
+    height: 15rem;
   }
-  &__false-sticker { width: 20%; height: 20%; position: absolute; margin: auto; top: 30%; left: 80%; bottom: 0; right: 0; z-index: 300; background-image: url("https://www.freepnglogos.com/uploads/heart-png/emoji-heart-33.png"); background-color: $fo-color; border: 0.3rem solid $fi-color; background-size: 2rem; background-position: center; @media (max-width: 400px) { background-size: 1.2rem; } @media (min-width: 600px) { height: 15%; } }
-  &__content { @include posAbsolute(a); z-index: 200; }
+}
+
+@media (min-width: 600px) {
+  .envelop {
+    width: 25rem;
+    height: 20rem;
+  }
+}
+
+@media (min-width: 600px) and (min-height: 600px) {
+  .envelop {
+    bottom: 20%;
+  }
+}
+
+.envelop__front-paper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  border-radius: 0.7rem;
+  border: 0.35rem solid #005A8C;
+  background-color: #0077B2;
+  clip-path: polygon(100% 0%, 50% 70%, 0% 0%, 0% 100%, 100% 100%);
+  z-index: 300;
+}
+
+.envelop__back-paper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  border-radius: 0.7rem;
+  background-color: #005A8C;
+  clip-path: polygon(0% 0%, 100% 0%, 90% 100%, 0% 90%);
+  z-index: 100;
+}
+
+.envelop__up-paper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  border-radius: 0.7rem;
+  background-color: #005A8C;
+  z-index: 400;
+  clip-path: polygon(0% 0%, 100% 0%, 50% 81%);
+}
+
+.envelop__sticker {
+  width: 100%;
+  height: 20%;
+  position: absolute;
+  margin: auto;
+  top: 30%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 400;
+  background-image: url("https://www.freepnglogos.com/uploads/heart-png/emoji-heart-33.png");
+  background-color: #E6F2FA;
+  border: 0.3rem solid #CCE0F0;
+  background-size: 2rem;
+  background-position: center;
+}
+
+@media (max-width: 400px) {
+  .envelop__sticker {
+    background-size: 1.2rem;
+  }
+}
+
+@media (min-width: 600px) {
+  .envelop__sticker {
+    height: 15%;
+  }
+}
+
+.envelop__false-sticker {
+  width: 20%;
+  height: 20%;
+  position: absolute;
+  margin: auto;
+  top: 30%;
+  left: 80%;
+  bottom: 0;
+  right: 0;
+  z-index: 300;
+  background-image: url("https://www.freepnglogos.com/uploads/heart-png/emoji-heart-33.png");
+  background-color: #E6F2FA;
+  border: 0.3rem solid #CCE0F0;
+  background-size: 2rem;
+  background-position: center;
+}
+
+@media (max-width: 400px) {
+  .envelop__false-sticker {
+    background-size: 1.2rem;
+  }
+}
+
+@media (min-width: 600px) {
+  .envelop__false-sticker {
+    height: 15%;
+  }
+}
+
+.envelop__content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 200;
 }
 
 /* Notes */
-.love-notes { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; }
+.love-notes {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .note {
-  width: 95%; height: 30%; background-color: $tab-bg; position: absolute; overflow: hidden; transition: height 0.5s, opacity 0.25s; box-shadow: 0px 0px 5px rgba(0,0,0,0.75);
-  &:nth-child(1) { bottom: 80%; }
-  &:nth-child(2) { bottom: 60%; }
-  &:nth-child(3) { bottom: 40%; }
-  &:nth-child(4) { bottom: 20%; }
-  &:nth-child(5) { bottom: 0%; }
+  width: 95%;
+  height: 30%;
+  background-color: #FFC0CB;
+  position: absolute;
+  overflow: hidden;
+  transition: height 0.5s, opacity 0.25s;
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.75);
+}
 
-  &:hover { cursor: pointer; height: 45%; }
+.note:nth-child(1) { bottom: 80%; }
+.note:nth-child(2) { bottom: 60%; }
+.note:nth-child(3) { bottom: 40%; }
+.note:nth-child(4) { bottom: 20%; }
+.note:nth-child(5) { bottom: 0%; }
 
-  &__text { font-family: "Sofia"; padding: 1rem; p { font-size: 0.9rem; margin-bottom: 1rem; text-align: center; } }
+.note:hover {
+  cursor: pointer;
+  height: 45%;
+}
+
+.note__text {
+  font-family: "Sofia";
+  padding: 1rem;
+}
+
+.note__text p {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 /* Hearts */
-.hearts { position: absolute; top: 60%; left: 0; right: 0; z-index: 500; pointer-events: none; }
-.heart { position: absolute; bottom: 0; right: 10%; pointer-events: none; width: 20px; height: 20px; background-color: $color-heart; transform: rotate(-45deg); transform-origin: 0 100%; animation: floatUp 4s forwards; }
-.heart:before, .heart:after { position: absolute; content: ""; width: 20px; height: 20px; background-color: $color-heart; border-radius: 50%; }
-.heart:before { top: -10px; left: 0; }
-.heart:after { left: 10px; top: 0; }
+.hearts {
+  position: absolute;
+  top: 60%;
+  left: 0;
+  right: 0;
+  z-index: 500;
+  pointer-events: none;
+}
 
-@keyframes floatUp { 0% { transform: translate(0,0) rotate(-45deg); opacity:1; } 100% { transform: translate(-50px, -250px) rotate(-45deg); opacity:0; } }
+.heart {
+  position: absolute;
+  bottom: 0;
+  right: 10%;
+  pointer-events: none;
+  width: 20px;
+  height: 20px;
+  background-color: #D00000;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+  animation: floatUp 4s forwards;
+}
+
+.heart:before,
+.heart:after {
+  position: absolute;
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-color: #D00000;
+  border-radius: 50%;
+}
+
+.heart:before {
+  top: -10px;
+  left: 0;
+}
+
+.heart:after {
+  left: 10px;
+  top: 0;
+}
+
+@keyframes floatUp {
+  0% { transform: translate(0,0) rotate(-45deg); opacity:1; }
+  100% { transform: translate(-50px, -250px) rotate(-45deg); opacity:0; }
+}
