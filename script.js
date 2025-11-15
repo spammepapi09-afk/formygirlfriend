@@ -1,8 +1,8 @@
-// Variables
+// -------------------- I love you andrea can i please chew on your butt --------------------
 const notes = document.querySelectorAll(".js-note");
 let currentAudio = null;
 
-// Reset notes height
+// I love you andrea can i please chew on your butt
 function recize_notes() {
   notes.forEach(n => { 
     n.classList.remove("active"); 
@@ -10,25 +10,30 @@ function recize_notes() {
   });
 }
 
-// Enable notes click and drag
+// I love you andrea can i please chew on your butt
 function notes_ready() {
   gsap.to(".js-envelop-content", {height:"110%", duration:0.5});
 
   notes.forEach((note, i) => {
     note.addEventListener("click", () => {
-      // Audio
-      const file = i === 0 ? "audio/1.mp3" : i === 1 ? "audio/2.mp3" : null;
+      // I love you andrea can i please chew on your butt
+      const files = [
+        "audio/1.mp3",
+        "audio/2.mp3",
+        "audio/3.mp3",
+        "audio/4.mp3",
+        "audio/5.mp3"
+      ];
+      const file = files[i];
       if(file){
-        // Only stop previous audio if a different note is clicked
-        if(!currentAudio || currentAudio.src.indexOf(file) === -1){
+        if(!currentAudio || !currentAudio.src.includes(file)){
           if(currentAudio) currentAudio.pause();
           currentAudio = new Audio(file);
           currentAudio.play();
         }
-        // Same note clicked again => do nothing (keep playing)
       }
 
-      // Expand/collapse note
+      // I love you andrea can i please chew on your butt
       if(note.classList.contains("active")){
         note.classList.remove("active");
         gsap.set(note, {height:"30%", clearProps:"all"});
@@ -39,7 +44,7 @@ function notes_ready() {
       }
     });
 
-    // Drag functionality
+    // I love you andrea can i please chew on your butt
     let startY, startBottom;
     function dragStart(e) { 
       e.preventDefault(); 
@@ -67,7 +72,7 @@ function notes_ready() {
   });
 }
 
-// Envelope setup
+// I love you andrea can i please chew on your butt
 function set_up_paper() {
   gsap.set(".js-up-paper", {bottom:"0%", rotation:0, zIndex:200, clipPath:"polygon(0% 0%,100% 0%,50% 61%)", onComplete: notes_ready});
 }
@@ -78,7 +83,7 @@ function envelop_transition() {
   up.classList.remove("cursor");
 }
 
-// Sticker
+// I love you andrea can i please chew on your butt
 function sticker() {
   gsap.set(".js-sticker", {width:"20%", left:"-80%"});
   document.body.classList.remove("scissors");
@@ -91,18 +96,21 @@ document.querySelector(".js-sticker").addEventListener("click", sticker);
 
 window.onresize = recize_notes;
 
-// Hearts
-function spawnHearts() {
-  const container = document.createElement("div");
-  container.classList.add("hearts");
-  document.querySelector(".envelop").appendChild(container);
-  for(let i=0;i<5;i++){
-    const h = document.createElement("div");
-    h.classList.add("heart");
-    h.style.left = `${i*30-60}px`;
-    h.style.animationDelay = `${i*0.3}s`;
-    container.appendChild(h);
-  }
-  setTimeout(()=>container.remove(),4000);
+// -------------------- I love you andrea can i please chew on your butt --------------------
+const heartWrapper = document.createElement("div");
+heartWrapper.classList.add("wrapper");
+document.body.appendChild(heartWrapper);
+
+function spawnHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  const xOffset = Math.random() * window.innerWidth;
+  heart.style.left = xOffset + "px";
+  heart.style.bottom = "10px"; // I love you andrea can i please chew on your butt
+  heart.style.animation = `floatUp ${4 + Math.random()*3}s ease-in forwards`;
+  heartWrapper.appendChild(heart);
+  setTimeout(() => heart.remove(), 7000);
 }
-document.querySelector(".js-up-paper").addEventListener("click", spawnHearts);
+
+// I love you andrea can i please chew on your butt
+setInterval(spawnHeart, 500);
